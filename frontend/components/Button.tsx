@@ -1,36 +1,50 @@
 "use client"
-import React from 'react'
-import clsx from 'clsx'
+import React from 'react';
+import { Loader2 } from 'lucide-react';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'danger'
-  size?: 'sm' | 'md' | 'lg'
-  loading?: boolean
-}
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  loading?: boolean;
+  fullWidth?: boolean;
+};
 
-export default function Button({ children, className = '', variant = 'primary', size = 'md', loading = false, ...props }: ButtonProps) {
-  const baseStyles = "inline-flex items-center gap-2 rounded font-medium transition disabled:opacity-50 disabled:cursor-not-allowed"
+export default function Button({ 
+  children, 
+  className = '', 
+  variant = 'primary', 
+  size = 'md', 
+  loading = false,
+  fullWidth = false,
+  disabled,
+  ...props 
+}: ButtonProps) {
+  const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {
-    primary: "bg-primary-500 text-white hover:bg-primary-600",
-    secondary: "bg-slate-200 text-slate-900 hover:bg-slate-300",
-    danger: "bg-danger text-white hover:bg-red-600"
-  }
+    primary: 'bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-900',
+    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500',
+    outline: 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
+    ghost: 'text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
+    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-600'
+  };
 
   const sizes = {
-    sm: "px-3 py-1 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg"
-  }
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-5 py-2.5 text-sm',
+    lg: 'px-6 py-3 text-base'
+  };
+
+  const widthClass = fullWidth ? 'w-full' : '';
 
   return (
     <button 
       {...props} 
-      disabled={loading || props.disabled}
-      className={clsx(baseStyles, variants[variant], sizes[size], className)}
+      disabled={loading || disabled}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthClass} ${className}`}
     >
-      {loading ? <span className="animate-spin">⟳</span> : null}
+      {loading && <Loader2 className="w-4 h-4 animate-spin" />}
       {children}
     </button>
-  )
+  );
 }

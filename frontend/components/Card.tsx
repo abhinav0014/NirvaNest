@@ -1,16 +1,33 @@
-import React from 'react'
-import clsx from 'clsx'
+import React from 'react';
 
 type CardProps = {
-  children: React.ReactNode
-  className?: string
-  hover?: boolean
-}
+  children: React.ReactNode;
+  className?: string;
+  hover?: boolean;
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+};
 
-export default function Card({ children, className = '', hover = false }: CardProps){
+export default function Card({ 
+  children, 
+  className = '', 
+  hover = false, 
+  padding = 'md' 
+}: CardProps) {
+  const paddingClasses = {
+    none: 'p-0',
+    sm: 'p-3',
+    md: 'p-5',
+    lg: 'p-6'
+  };
+
+  const baseClasses = 'bg-white border border-gray-200 rounded-xl shadow-sm';
+  const hoverClasses = hover 
+    ? 'hover:shadow-md hover:border-gray-300 transition-all duration-200 cursor-pointer' 
+    : '';
+  
   return (
-    <div className={clsx("bg-white border border-neutral-200 rounded-lg p-4 shadow-card", hover && "hover:shadow-lg hover:border-primary-200 transition", className)}>
+    <div className={`${baseClasses} ${hoverClasses} ${paddingClasses[padding]} ${className}`}>
       {children}
     </div>
-  )
+  );
 }

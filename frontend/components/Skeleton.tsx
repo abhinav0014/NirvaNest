@@ -1,14 +1,35 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {
-  className?: string
-  children?: React.ReactNode
-}
+type SkeletonProps = {
+  className?: string;
+  variant?: 'text' | 'circular' | 'rectangular';
+  width?: string;
+  height?: string;
+};
 
-export default function Skeleton({ className = '', children }: Props){
+export default function Skeleton({ 
+  className = '', 
+  variant = 'rectangular',
+  width,
+  height 
+}: SkeletonProps) {
+  const variantClasses = {
+    text: 'rounded h-4',
+    circular: 'rounded-full',
+    rectangular: 'rounded-lg'
+  };
+
+  const style = {
+    width: width || undefined,
+    height: height || undefined
+  };
+
   return (
-    <div className={`skeleton ${className}`.trim()} aria-busy="true" aria-label="loading">
-      {children}
-    </div>
-  )
+    <div 
+      className={`animate-pulse bg-gray-200 ${variantClasses[variant]} ${className}`}
+      style={style}
+      aria-busy="true" 
+      aria-label="Loading"
+    />
+  );
 }

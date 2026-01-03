@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OTP Test</title>
+  </head>
+  <body>
+    <h1>OTP Test Page</h1>
+    <form id="request-form">
+      <label>Phone number: <input id="phone"/></label>
+      <button type="submit">Request OTP</button>
+    </form>
+    <div id="request-result"></div>
+
+    <form id="verify-form">
+      <label>Phone number: <input id="vphone"/></label>
+      <label>Code: <input id="code"/></label>
+      <button type="submit">Verify OTP</button>
+    </form>
+    <div id="verify-result"></div>
+
+    <script>
+      const apiBase = '/backend';
+      document.getElementById('request-form').addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const phone = document.getElementById('phone').value;
+        const res = await fetch('/api/v1/auth/request', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({phone_number: phone})});
+        const data = await res.json();
+        document.getElementById('request-result').innerText = JSON.stringify(data);
+      });
+
+      document.getElementById('verify-form').addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const phone = document.getElementById('vphone').value;
+        const code = document.getElementById('code').value;
+        const res = await fetch('/api/v1/auth/verify', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({phone_number: phone, code})});
+        const data = await res.json();
+        document.getElementById('verify-result').innerText = JSON.stringify(data);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv
+venv/
+env/
+ENV/
+*.env
+backend/.env
+/.mypy_cache/
+.pytest_cache/
+coverage.xml
+htmlcov/
+dist/
+build/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+out/
+/.parcel-cache
+
+# Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Database volumes
+/nirvanest_db_data/
+
+# Logs
+*.log
+logs/

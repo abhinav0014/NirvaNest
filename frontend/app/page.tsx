@@ -131,7 +131,7 @@ export default function Home() {
           }}></div>
         </div>
 
-        <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
+        <div className="container mx-auto px-6 py-16 md:py-20 relative">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Buy and Sell Locally in Nepal

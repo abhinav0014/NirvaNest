@@ -12,52 +12,52 @@ export default function Navbar() {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between py-5">
             {/* Logo */}
-            <a 
+            <Link 
               href="/" 
               className="font-semibold text-lg text-gray-900 flex items-center gap-2 hover:text-blue-600 transition-colors"
             >
               <Home className="w-5 h-5" />
               <span>NirvaNest</span>
-            </a>
+            </Link>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              <a 
+              <Link 
                 href="/browse" 
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 Browse
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/sell" 
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 Sell
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/auctions" 
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 Auctions
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/my-listings" 
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 My Listings
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/messages" 
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
               >
                 Messages
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/auth" 
                 className="text-sm font-medium bg-gray-900 text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-colors"
               >
                 Sign in
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -83,53 +83,53 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col items-start justify-start h-full px-8 pt-32 gap-8">
-          <a 
+          <Link 
             href="/browse" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
           >
             Browse
-          </a>
+          </Link>
           
-          <a 
+          <Link 
             href="/sell" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
           >
             Sell
-          </a>
+          </Link>
           
-          <a 
+          <Link 
             href="/auctions" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
           >
             Auctions
-          </a>
+          </Link>
           
-          <a 
+          <Link 
             href="/my-listings" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
           >
             My Listings
-          </a>
+          </Link>
           
-          <a 
+          <Link 
             href="/messages" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
           >
             Messages
-          </a>
+          </Link>
           
-          <a 
+          <Link 
             href="/auth" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-xl font-medium bg-gray-900 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors mt-4"
           >
             Sign in
-          </a>
+          </Link>
         </div>
       </div>
 

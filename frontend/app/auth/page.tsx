@@ -198,11 +198,11 @@ export default function AuthPage() {
             By signing in, you agree to our{' '}
             <Link href="/terms" className="text-gray-900 hover:underline">
               Terms of Service
-            </a>{' '}
+            </Link>{' '}
             and{' '}
             <Link href="/privacy" className="text-gray-900 hover:underline">
               Privacy Policy
-            </a>
+            </Link>
           </p>
         </div>
       </div>

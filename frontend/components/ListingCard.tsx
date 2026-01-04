@@ -90,7 +90,7 @@ export default function ListingCard({
   );
 
   if (href) {
-    return <a href={href} onClick={onClick}>{content}</a>;
+    return <Link href={href} onClick={onClick}>{content}</Link>;
   }
 
   if (onClick) {

@@ -22,24 +22,24 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-3">Marketplace</h4>
             <ul className="text-sm text-gray-600 space-y-2">
               <li>
-                <a href="/browse" className="hover:text-gray-900 transition-colors">
+                <Link href="/browse" className="hover:text-gray-900 transition-colors">
                   Browse Items
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/sell" className="hover:text-gray-900 transition-colors">
+                <Link href="/sell" className="hover:text-gray-900 transition-colors">
                   Sell an Item
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/auctions" className="hover:text-gray-900 transition-colors">
+                <Link href="/auctions" className="hover:text-gray-900 transition-colors">
                   Auctions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/my-listings" className="hover:text-gray-900 transition-colors">
+                <Link href="/my-listings" className="hover:text-gray-900 transition-colors">
                   My Listings
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,24 +49,24 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-3">Support</h4>
             <ul className="text-sm text-gray-600 space-y-2">
               <li>
-                <a href="/help" className="hover:text-gray-900 transition-colors">
+                <Link href="/help" className="hover:text-gray-900 transition-colors">
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/safety" className="hover:text-gray-900 transition-colors">
+                <Link href="/safety" className="hover:text-gray-900 transition-colors">
                   Safety Tips
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="hover:text-gray-900 transition-colors">
+                <Link href="/contact" className="hover:text-gray-900 transition-colors">
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/faq" className="hover:text-gray-900 transition-colors">
+                <Link href="/faq" className="hover:text-gray-900 transition-colors">
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,24 +76,24 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 mb-3">Legal</h4>
             <ul className="text-sm text-gray-600 space-y-2">
               <li>
-                <a href="/privacy" className="hover:text-gray-900 transition-colors">
+                <Link href="/privacy" className="hover:text-gray-900 transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="hover:text-gray-900 transition-colors">
+                <Link href="/terms" className="hover:text-gray-900 transition-colors">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cookies" className="hover:text-gray-900 transition-colors">
+                <Link href="/cookies" className="hover:text-gray-900 transition-colors">
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/guidelines" className="hover:text-gray-900 transition-colors">
+                <Link href="/guidelines" className="hover:text-gray-900 transition-colors">
                   Community Guidelines
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -106,15 +106,15 @@ export default function Footer() {
               © {currentYear} NirvaNest. Built for Nepal's marketplace community.
             </p>
             <div className="flex items-center gap-6">
-              <a href="/about" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+              <Link href="/about" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                 About
-              </a>
-              <a href="/blog" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+              </Link>
+              <Link href="/blog" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                 Blog
-              </a>
-              <a href="/careers" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+              </Link>
+              <Link href="/careers" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                 Careers
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -38,7 +38,7 @@ export default function ListingCard({
       padding="none"
     >
       {/* Image Section */}
-      <div className="relative aspect-video bg-gray-100 overflow-hidden">
+      <div className="relative aspect-video bg-neutral-100 overflow-hidden">
         {imageUrl ? (
           <img 
             src={imageUrl} 
@@ -46,17 +46,17 @@ export default function ListingCard({
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
+          <div className="w-full h-full flex items-center justify-center text-neutral-400">
             <span className="text-4xl">📦</span>
           </div>
         )}
         {condition && (
-          <span className="absolute top-3 left-3 bg-white px-2 py-1 rounded-md text-xs font-medium text-gray-700 shadow-sm">
+          <span className="absolute top-3 left-3 bg-white px-2 py-1 rounded-md text-xs font-medium text-neutral-700 shadow-sm">
             {condition}
           </span>
         )}
         {category && (
-          <span className="absolute top-3 right-3 bg-gray-900 text-white px-2 py-1 rounded-md text-xs font-medium">
+          <span className="absolute top-3 right-3 bg-primary-600 text-white px-2 py-1 rounded-md text-xs font-medium">
             {category}
           </span>
         )}
@@ -64,24 +64,24 @@ export default function ListingCard({
 
       {/* Content Section */}
       <div className="p-4">
-        <h3 className="font-semibold text-base text-gray-900 line-clamp-2 mb-2">
+        <h3 className="font-semibold text-base text-neutral-900 line-clamp-2 mb-2">
           {title}
         </h3>
         
         {description && (
-          <p className="text-sm text-gray-600 line-clamp-2 mb-3">
+          <p className="text-sm text-neutral-600 line-clamp-2 mb-3">
             {description}
           </p>
         )}
 
         <div className="flex items-baseline gap-1 mb-3">
-          <span className="text-xs text-gray-500">{currency}</span>
-          <span className="text-xl font-bold text-gray-900">
+          <span className="text-xs text-neutral-500">{currency}</span>
+          <span className="text-xl font-bold text-primary-600">
             {price.toLocaleString()}
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-gray-500">
+        <div className="flex items-center justify-between text-xs text-neutral-500">
           {location && <span>📍 {location}</span>}
           {postedAt && <span>{postedAt}</span>}
         </div>

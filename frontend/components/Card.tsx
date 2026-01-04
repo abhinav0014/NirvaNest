@@ -20,9 +20,9 @@ export default function Card({
     lg: 'p-6'
   };
 
-  const baseClasses = 'bg-white border border-gray-200 rounded-xl shadow-sm';
+  const baseClasses = 'bg-white border border-neutral-200 rounded-xl shadow-card';
   const hoverClasses = hover 
-    ? 'hover:shadow-md hover:border-gray-300 transition-all duration-200 cursor-pointer' 
+    ? 'hover:shadow-lg hover:border-primary-200 transition-all duration-200 cursor-pointer' 
     : '';
   
   return (

@@ -26,7 +26,7 @@ export default function Skeleton({
 
   return (
     <div 
-      className={`animate-pulse bg-gray-200 ${variantClasses[variant]} ${className}`}
+      className={`animate-pulse bg-neutral-200 ${variantClasses[variant]} ${className}`}
       style={style}
       aria-busy="true" 
       aria-label="Loading"

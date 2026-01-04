@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ListingCard from '../components/ListingCard';
 import Card from '../components/Card';
 import Skeleton from '../components/Skeleton';
-import { Search, TrendingUp, ShieldCheck, Zap, ArrowRight, Tag, Percent } from 'lucide-react';
+import { TrendingUp, ShieldCheck, Zap, ArrowRight, Percent } from 'lucide-react';
 
 // Skeleton Card Component
 function SkeletonCard() {
@@ -30,14 +30,7 @@ export default function Home() {
   const [listings, setListings] = useState<any[]>([]);
 
   const quickSearches = [
-    { id: 1, name: 'Electronics', icon: '📱', color: 'bg-accent-50 text-accent-600' },
-    { id: 2, name: 'Vehicles', icon: '🚗', color: 'bg-primary-50 text-primary-600' },
-    { id: 3, name: 'Furniture', icon: '🪑', color: 'bg-warning/10 text-warning' },
-    { id: 4, name: 'Clothing', icon: '👕', color: 'bg-success/10 text-success' },
-    { id: 5, name: 'Books', icon: '📚', color: 'bg-info/10 text-info' },
-    { id: 6, name: 'Sports', icon: '⚽', color: 'bg-danger/10 text-danger' },
-    { id: 7, name: 'Tools', icon: '🔧', color: 'bg-neutral-100 text-neutral-700' },
-    { id: 8, name: 'Gaming', icon: '🎮', color: 'bg-primary-100 text-primary-700' },
+    'Electronics', 'Vehicles', 'Furniture', 'Clothing', 'Books', 'Sports', 'Tools', 'Gaming', 'Home & Garden', 'Beauty'
   ];
 
   // Simulate data loading
@@ -111,29 +104,54 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      {/* Hero Section with Gradient */}
-      <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-accent text-white">
-        <div className="container mx-auto px-6 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+      {/* Quick Search Categories - Moved to Top */}
+      <section className="bg-white border-b border-neutral-200 sticky top-[73px] z-40">
+        <div className="w-full overflow-hidden">
+          <div className="flex gap-0 overflow-x-auto scrollbar-hide">
+            {quickSearches.map((category, index) => (
+              <Link
+                key={index}
+                href={`/browse?category=${category.toLowerCase()}`}
+                className="flex-shrink-0 px-6 py-4 text-sm font-semibold text-neutral-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 border-b-2 border-transparent hover:border-primary-500 whitespace-nowrap"
+              >
+                {category}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Section - Reduced Height with Full Width Background */}
+      <section className="relative w-full bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Buy and Sell Locally in Nepal
             </h1>
-            <p className="text-lg md:text-xl text-primary-50 mb-10">
-              A trusted peer-to-peer marketplace where Nepalis connect to buy and sell with secure payments.
+            <p className="text-lg md:text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+              A trusted peer-to-peer marketplace connecting Nepalis with secure payments.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link  
                 href="/browse"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-xl font-medium hover:bg-neutral-50 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 rounded-full font-semibold hover:bg-neutral-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
               >
                 Start Browsing
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link  
                 href="/sell"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-xl font-medium hover:bg-white/10 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-colors"
               >
                 Sell an Item
               </Link>
@@ -144,95 +162,76 @@ export default function Home() {
 
       {/* Offer Banners */}
       <section className="bg-white border-b border-neutral-200">
-        <div className="container mx-auto px-6 py-8">
+        <div className="container mx-auto px-6 py-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Banner 1 */}
-            <div className="bg-gradient-to-r from-warning to-warning/80 rounded-xl p-6 text-white flex items-center justify-between">
+            <div className="bg-gradient-to-r from-warning to-warning/90 rounded-2xl p-6 text-white flex items-center justify-between shadow-lg">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <Percent className="w-5 h-5" />
-                  <span className="text-sm font-semibold uppercase tracking-wide">Limited Time</span>
+                  <span className="text-sm font-bold uppercase tracking-wide">Limited Time</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">Zero Service Fee</h3>
                 <p className="text-sm text-white/90">For your first 3 listings this month</p>
               </div>
-              <Tag className="w-16 h-16 opacity-20" />
+              <div className="hidden sm:block w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                <Percent className="w-8 h-8" />
+              </div>
             </div>
 
             {/* Banner 2 */}
-            <div className="bg-gradient-to-r from-success to-success/80 rounded-xl p-6 text-white flex items-center justify-between">
+            <div className="bg-gradient-to-r from-success to-success/90 rounded-2xl p-6 text-white flex items-center justify-between shadow-lg">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <ShieldCheck className="w-5 h-5" />
-                  <span className="text-sm font-semibold uppercase tracking-wide">Secure</span>
+                  <span className="text-sm font-bold uppercase tracking-wide">Secure</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">Buyer Protection</h3>
                 <p className="text-sm text-white/90">Shop with confidence, guaranteed</p>
               </div>
-              <ShieldCheck className="w-16 h-16 opacity-20" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Search Categories */}
-      <section className="bg-white border-b border-neutral-200">
-        <div className="container mx-auto px-6 py-8">
-          <h2 className="text-2xl font-bold text-neutral-900 mb-6">
-            Browse by Category
-          </h2>
-          <div className="relative">
-            <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
-              {quickSearches.map(category => (
-                <Link
-                  key={category.id}
-                  href={`/browse?category=${category.name.toLowerCase()}`}
-                  className={`flex-shrink-0 px-6 py-4 ${category.color} rounded-xl font-medium text-sm hover:shadow-md transition-all duration-200 flex items-center gap-3 min-w-[140px]`}
-                >
-                  <span className="text-2xl">{category.icon}</span>
-                  <span>{category.name}</span>
-                </Link>
-              ))}
+              <div className="hidden sm:block w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 md:py-24 bg-neutral-50">
+      <section className="py-16 md:py-20 bg-neutral-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12">
               Why Choose NirvaNest
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary-100 text-primary-600 rounded-xl mb-4">
-                  <ShieldCheck className="w-6 h-6" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="text-center hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary-100 text-primary-600 rounded-2xl mb-4">
+                  <ShieldCheck className="w-7 h-7" />
                 </div>
-                <h3 className="font-semibold text-lg text-neutral-900 mb-2">Secure Payments</h3>
-                <p className="text-sm text-neutral-600">
-                  Integrated with eSewa, Khalti, and ConnectIPS for safe transactions.
+                <h3 className="font-bold text-xl text-neutral-900 mb-3">Secure Payments</h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  Integrated with eSewa, Khalti, and ConnectIPS for safe and reliable transactions.
                 </p>
               </Card>
 
-              <Card className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-accent-100 text-accent-600 rounded-xl mb-4">
-                  <Zap className="w-6 h-6" />
+              <Card className="text-center hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent-100 text-accent-600 rounded-2xl mb-4">
+                  <Zap className="w-7 h-7" />
                 </div>
-                <h3 className="font-semibold text-lg text-neutral-900 mb-2">Fast & Easy</h3>
-                <p className="text-sm text-neutral-600">
-                  List items in minutes and connect with buyers instantly.
+                <h3 className="font-bold text-xl text-neutral-900 mb-3">Fast & Easy</h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  List items in minutes and connect with buyers instantly across Nepal.
                 </p>
               </Card>
 
-              <Card className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-success/10 text-success rounded-xl mb-4">
-                  <TrendingUp className="w-6 h-6" />
+              <Card className="text-center hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-success/10 text-success rounded-2xl mb-4">
+                  <TrendingUp className="w-7 h-7" />
                 </div>
-                <h3 className="font-semibold text-lg text-neutral-900 mb-2">Local Focus</h3>
-                <p className="text-sm text-neutral-600">
-                  Built specifically for Nepal's marketplace community.
+                <h3 className="font-bold text-xl text-neutral-900 mb-3">Local Focus</h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  Built specifically for Nepal's marketplace community and culture.
                 </p>
               </Card>
             </div>
@@ -240,81 +239,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Links Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-8">
-            Quick Access
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href="/listings">
-              <Card hover className="h-full border-primary-200 hover:border-primary-300">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">📋</span>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 mb-1">Listings</h3>
-                    <p className="text-sm text-neutral-600">Browse or create listings</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-
-            <Link href="/auth">
-              <Card hover className="h-full border-accent-200 hover:border-accent-300">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">🔐</span>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 mb-1">Sign In</h3>
-                    <p className="text-sm text-neutral-600">Phone-based authentication</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-
-            <Link href="/payments">
-              <Card hover className="h-full border-success/20 hover:border-success/30">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">💳</span>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 mb-1">Payments</h3>
-                    <p className="text-sm text-neutral-600">Secure payment processing</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-
-            <Link href="/orders">
-              <Card hover className="h-full border-info/20 hover:border-info/30">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">📦</span>
-                  <div>
-                    <h3 className="font-semibold text-neutral-900 mb-1">Orders</h3>
-                    <p className="text-sm text-neutral-600">Track your transactions</p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Featured Listings Section */}
-      <section className="py-16 md:py-24 bg-neutral-50">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900">
-              Featured Listings
-            </h2>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
+                Featured Listings
+              </h2>
+              <p className="text-neutral-600">Discover great deals from trusted sellers</p>
+            </div>
             <Link  
               href="/browse"
-              className="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors flex items-center gap-1"
+              className="hidden sm:flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
             >
               View All
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {loading ? (
               <>
                 <SkeletonCard />
@@ -340,12 +284,30 @@ export default function Home() {
               ))
             )}
           </div>
+
+          <div className="text-center sm:hidden">
+            <Link  
+              href="/browse"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
+            >
+              View All Listings
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary-600 to-primary-700">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Start Selling?
           </h2>
@@ -354,7 +316,7 @@ export default function Home() {
           </p>
           <Link  
             href="/sell"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-600 rounded-xl font-medium hover:bg-neutral-50 transition-colors shadow-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary-700 rounded-full font-semibold hover:bg-neutral-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
           >
             Post Your First Item
             <ArrowRight className="w-5 h-5" />

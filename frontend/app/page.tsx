@@ -105,21 +105,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Quick Search Categories - Moved to Top */}
-      <section className="bg-white border-b border-neutral-200 sticky top-[73px] z-40">
-        <div className="w-full overflow-hidden">
-          <div className="flex gap-0 overflow-x-auto scrollbar-hide">
-            {quickSearches.map((category, index) => (
-              <Link
-                key={index}
-                href={`/browse?category=${category.toLowerCase()}`}
-                className="flex-shrink-0 px-6 py-4 text-sm font-semibold text-neutral-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 border-b-2 border-transparent hover:border-primary-500 whitespace-nowrap"
-              >
-                {category}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="bg-white border-b border-neutral-200 sticky top-0 z-[5]">
+  <div className="w-full overflow-hidden">
+    <div className="flex gap-0 overflow-x-auto scrollbar-hide">
+      {quickSearches.map((category, index) => (
+        <Link
+          key={index}
+          href={`/browse?category=${category.toLowerCase()}`}
+          className="flex-shrink-0 px-6 py-4 text-sm font-semibold text-neutral-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 border-b-2 border-transparent hover:border-primary-500 whitespace-nowrap"
+        >
+          {category}
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Hero Section - Reduced Height with Full Width Background */}
       <section className="relative w-full bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">

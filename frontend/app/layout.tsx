@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#1E3A8A" />
       </head>
       <body className="bg-neutral-50 text-neutral-900">
-        <Navbar showSearch={true} />
+        <Navbar />
         <main role="main" className="min-h-screen">
           {children}
         </main>

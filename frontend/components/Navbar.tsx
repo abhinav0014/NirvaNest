@@ -136,7 +136,7 @@ export default function Navbar() {
 
       {/* Mobile Full Screen Menu Overlay - Higher z-index */}
       <div 
-        className={`md:hidden fixed inset-0 bg-white z-100 transition-transform duration-300 ease-out ${
+        className={`md:hidden fixed inset-0 bg-white z-[60] transition-transform duration-300 ease-out ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
